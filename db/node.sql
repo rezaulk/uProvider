@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 06, 2018 at 11:09 AM
+-- Generation Time: Jul 06, 2018 at 11:34 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -120,7 +120,7 @@ ALTER TABLE `connection`
 -- Indexes for table `login`
 --
 ALTER TABLE `login`
-  ADD PRIMARY KEY (`password`);
+  ADD PRIMARY KEY (`userid`);
 
 --
 -- Indexes for table `package`
