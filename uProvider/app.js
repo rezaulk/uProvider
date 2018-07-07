@@ -36,7 +36,7 @@ app.use('*', function(req, res, next){
 	{
 		if(req.session.username)
 		{
-			res.redirect('/edit');
+			res.redirect('/admin');
 			return;
 		}
 		next();

@@ -14,7 +14,7 @@ router.get('/dashboard', function(req, res){
 		
 		console.log(result.length);
        k=result.length;
-		dashboard["package"]=convert.toInt(result.length);
+		//dashboard["package"]=convert.toInt(result.length);
 });
 	dashboard.package=k;
 	console.log(typeof(k));
