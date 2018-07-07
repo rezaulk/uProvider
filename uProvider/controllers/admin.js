@@ -12,26 +12,30 @@ router.get('/dashboard', function(req, res){
 	dashboardAdminModel.getAll(function(result){
 		//console.log(result);
 		
-		console.log(result.length);
+	   console.log(result.length);
        k=result.length;
 		//dashboard["package"]=convert.toInt(result.length);
 });
 	dashboard.package=k;
-	console.log(typeof(k));
+	console.log(typeof(1));
+	//console.log(number(k));
 	res.render('admin/dashboard', {dashboard});
     
 });
 
 
 
-
-router.get('/addPackage', function(req, res){	
-	//res.send("ok");
-	res.render('admin/addPackage');
+router.get('/myPackages', function(req, res){
+	dashboardAdminModel.getAllPackages(function(result)
+	{
+		res.render('admin/myPackages',{packageList:result})
+	});
+	//res.render('admin/addPackage');
 
 });
 
-router.get('/myPackages', function(req, res){	
+router.get('/addPackage', function(req, res){	
+	
 	//res.send("ok");
 	res.render('admin/myPackages');
 

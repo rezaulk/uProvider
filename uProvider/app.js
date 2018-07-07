@@ -36,8 +36,16 @@ app.use('*', function(req, res, next){
 	{
 		if(req.session.username)
 		{
+			if(req.session.usertype=="user")
+			{
+				res.redirect('/user');
+			return;
+			}
+			else
 			res.redirect('/admin');
 			return;
+
+			
 		}
 		next();
 	}

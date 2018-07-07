@@ -37,34 +37,17 @@
 </div>
 <div class="left-sidebar">
     <div class="flex-container" style="padding: 1px;">
+
+          <% for(var i = 0; i < packageList.length; i++){ %>
                 <div style="padding: 15px; width: 450px;margin: 20px;">
-                      Durbar Economy<br>Package Internet TM<br>15Mbps<br>UNLIMITED
-                    <br>1200TK
+                      <%= packageList[i].packagename %><br>Package Internet TM<br><%= packageList[i].speed %><br>UNLIMITED
+                    <br><%= packageList[i].price %>
                     <br><a href="packageDetails.html">  View Package</a>
                 </div>
 
-                <div style="padding: 15px; width: 450px;margin: 20px;">
-                      Durbar Standard<br>Package Internet TM
-                    <br>20Mbps<br>UNLIMITED<br>
-                    1650TK<br>
-                    <a href="packageDetails.html">View Package</a>
-                </div>
-
-                <div style="padding: 15px; width: 450px;margin: 20px;">
-                      Durbar Advance<br>Package Internet TM
-                    <br>25Mbps<br>UNLIMITED<br>
-                    2100TK<br>
-                    <a href="packageDetails.html">View Package</a>
-                </div>
-
-                <div style="padding: 15px; width: 450px;margin: 20px;">
-                      Durbar Ultimate<br>Package Internet TM<br>
-                    30Mbps<br>UNLIMITED
-                    <br>2650TK
-                    <br><a href="packageDetails.html">View Package</a>
-                </div>
-
-           </div>
+           <% } %>
+   
+    </div>
 </div>
 <div style="height: 90px;margin: 10px;background-color: #2C3A49">
            <div></div>

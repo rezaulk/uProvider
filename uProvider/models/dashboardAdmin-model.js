@@ -13,6 +13,15 @@ module.exports = {
 			callback(result);
 		});
 	},
+
+	getAllPackages: function(callback){
+		var sql = "SELECT * FROM package";
+		db.executeQuery(sql, null, function(result){
+			callback(result);
+		});
+	},
+
+
 	get: function(id, callback){
 		var sql = "SELECT * FROM categories WHERE id=?";
 		db.executeQuery(sql, [id], function(result){

@@ -9,12 +9,18 @@ router.get('/', function(req, res){
 router.post('/', function(req, res){
 	var un = req.body.username;
 	var ps = req.body.password;
-	userModel.validateUser(un, ps, function(status){
-		console.log(status);
+	userModel.validateUser(un, ps, function(status,k){
+		//console.log(k);
 		if(status)
 		{
 			req.session.username = un;
-			res.redirect('/user/dashboard');
+			req.session.usertype=k;
+			//res.send('Valid');
+			if(k=="admin")
+			res.redirect('/admin');
+		else
+			res.redirect('/user');
+
 		}
 		else
 		{
