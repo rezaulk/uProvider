@@ -15,6 +15,8 @@ var admin = require('./controllers/admin');
 
 
 
+
+
 // CONFIGURATION
 app.set('view engine', 'ejs');
 
@@ -22,6 +24,8 @@ app.set('view engine', 'ejs');
 // MIDDLEWARES
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(expressSession({secret: 'my top secret pass', saveUninitialized: true, resave: false}));
+
+app.use(express.static(__dirname + '/'));
 
 app.use('*', function(req, res, next){
 	if(req.originalUrl == '/login' || req.originalUrl == '/logout')
@@ -49,21 +53,16 @@ app.use('/admin', admin);
 
 
 
+
+
 app.use('/category', category);
 
 app.get('/', function(req, res){
 	//res.redirect('user');
 	
-	res.redirect('index');
+	res.redirect('/home');
 	console.log(req.session);
 	req.session.name = 'ABCD';
-
-});
-var express = require('express');
-var router = express.Router();
-router.get('/index', function(req, res){	
-	//res.send("ok");
-	res.render('index');
 
 });
 
