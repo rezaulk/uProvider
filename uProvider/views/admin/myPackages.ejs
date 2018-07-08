@@ -38,8 +38,11 @@
 
           <% for(var i = 0; i < packageList.length; i++){ %>
                 <div style="padding: 15px; width: 450px;margin: 20px;">
-                      <%= packageList[i].packagename %><br>Package Internet TM<br><%= packageList[i].speed %><br>UNLIMITED
-                    <br><%= packageList[i].price %>
+                      <%= packageList[i].packagename %>
+                                  <br>Package Internet TM<br>
+                      <%= packageList[i].speed %>
+                               <br>UNLIMITED<br>
+                    <%= packageList[i].price %>
                     <br><a href="packageDetails">  View Package</a>
                 </div>
 

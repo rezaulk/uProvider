@@ -14,6 +14,13 @@ module.exports = {
 		});
 	},
 
+	getAllAdmin: function(callback){
+		var sql = "SELECT * FROM users where usertype='admin'";
+		db.executeQuery(sql, null, function(result){
+			callback(result);
+		});
+	},
+
 	getAllPackages: function(callback){
 		var sql = "SELECT * FROM package";
 		db.executeQuery(sql, null, function(result){
@@ -21,13 +28,49 @@ module.exports = {
 		});
 	},
 
+    getAllPayment: function(callback){
+		var sql = "SELECT * FROM payment";
+		db.executeQuery(sql, null, function(result){
+			callback(result);
+		});
+	},
 
-	get: function(id, callback){
-		var sql = "SELECT * FROM categories WHERE id=?";
+	getConncetionId: function(id,callback){
+		var sql = "SELECT * FROM connection where connectionid=?";
+		db.executeQuery(sql, [id], function(result){
+			callback(result);
+		});
+	},
+
+	getUserName: function(id,callback){
+		var sql = "SELECT * FROM users where userid=?";
 		db.executeQuery(sql, [id], function(result){
 			callback(result[0]);
 		});
 	},
+
+	getPackageName: function(id,callback){
+		var sql = "SELECT * FROM package where packageid=?";
+		db.executeQuery(sql, [id], function(result){
+			callback(result[0]);
+		});
+	},
+
+
+	get: function(id, callback){
+		var sql = "SELECT * FROM package WHERE packageid=?";
+		db.executeQuery(sql, [id], function(result){
+			callback(result[0]);
+		});
+	},
+
+	getPName: function(packagename, callback){
+		var sql = "SELECT * FROM categories WHERE packagename=?";
+		db.executeQuery(sql, [packagename], function(result){
+			callback(result[0]);
+		});
+	},
+
 	insert: function(category, callback){
 		var sql = "INSERT INTO categories VALUES (null, ?, ?)";
 		db.executeQuery(sql, [category.catname, category.desc], function(result){

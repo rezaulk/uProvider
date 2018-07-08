@@ -26,24 +26,31 @@ router.get('/', function(req, res){
 });
 
 router.get('/dashboard', function(req, res){	
-	//res.send("ok");
-	//var dashboard = {package:'0'};
+	
 	var dashboard= new Object();
 	var k;
-	dashboardAdminModel.getAll(function(result){
+	dashboardAdminModel.getAllUser(function(result){
 					
-				console.log(result.length);
-			    k=result.length;
-	          
-	          dashboard.package=k;
-	          //console.log(dashboard.package);
-
-
-					//dashboard["package"]=convert.toInt(result.length);
+			  k=result.length;
+	          dashboard.TotalUser=k;
+	          console.log(dashboard.TotalUser);
 			});
+	/*dashboardAdminModel.getAllPackages(function(result){
+
+	          dashboard.TotalPackage=result.length;
+	          console.log(dashboard.TotalPackage);
+	        
+			});
+	dashboardAdminModel.getAllAdmin(function(result){
+
+	          dashboard.TotalAdmin=result.length;
+	        
+			});*/
 
 	dashboard.name=req.session.username;
+	console.log(dashboard);
 	res.render('admin/dashboard', {dashboard});
+	
     
 });
 
@@ -88,8 +95,8 @@ router.post('/addPackage', function(req, res){
 });
 
 router.get('/paymentList', function(req, res){
-	var array=[];
-	
+	var array=new Object();
+
    dashboardAdminModel.getAllPayment(function(result)
    {
 
@@ -113,7 +120,7 @@ router.get('/paymentList', function(req, res){
                   //console.log(userid);
                   //console.log(packageid);
                   //console.log(k);
-
+                    
 
                       var k;
                      dashboardAdminModel.getUserName(userid,function(resul1)

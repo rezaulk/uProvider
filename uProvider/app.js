@@ -14,6 +14,8 @@ var admin = require('./controllers/admin');
 var index = require('./controllers/index');
 var home = require('./controllers/home');
 var signup = require('./controllers/signup');
+var packages = require('./controllers/packages');
+
 
 
 
@@ -31,9 +33,10 @@ app.use(expressSession({secret: 'my top secret pass', saveUninitialized: true, r
 app.use(express.static(__dirname + '/'));
 
 app.use('*', function(req, res, next){
-	if(req.originalUrl == '/login' || req.originalUrl == '/home' || req.originalUrl == '/signup')
+	if(req.url=='/' || req.originalUrl == '/login' || req.originalUrl == '/logout' || req.originalUrl == '/signup')
 	{
 		next();
+		return;
 	}
 	else
 	{
@@ -57,6 +60,8 @@ app.use('/admin', admin);
 app.use('/index', index);
 app.use('/home', home);
 app.use('/signup', signup);
+app.use('/packages', packages);
+
 
 app.get('/', function(req, res){
 	//console.log(req.session);

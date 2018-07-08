@@ -20,34 +20,14 @@
   </div>
 
           <div class="flex-container">
-                <div>
-                      Durbar Economy<br>Package Internet TM<br>15Mbps<br>UNLIMITED
-                    <br>1200TK
-                    <br><a href="packages" class="button" style="width: 130px;height: 50px;font-size: 20px;">  Get now</a>
+                <% for(var i = 0; i < packageList.length; i++){ %>
+                <div style="padding: 15px; width: 450px;margin: 20px;">
+                      <%= packageList[i].packagename %><br>Package Internet TM<br><%= packageList[i].speed %><br>UNLIMITED
+                    <br><%= packageList[i].price %>
+                    <br><a href="packages/<%=packageList[i].packageid %>"> Get Now</a>
                 </div>
 
-                <div>
-                      Durbar Standard<br>Package Internet TM
-                    <br>20Mbps<br>UNLIMITED<br>
-                    1650TK<br>
-                    <a href="packages" class="button" style="width: 130px;height: 50px;font-size: 20px;">Get now</a>
-                </div>
-
-                <div>
-                    Durbar Advance<br>
-                    Package Internet TM<br>
-                    25Mbps<br>
-                    UNLIMITED<br>
-                    2100TK<br>
-                    <a href="packages" class="button" style="width: 130px;height: 50px;font-size: 20px;">Get now</a>
-                </div>
-
-                <div>
-                      Durbar Ultimate<br>Package Internet TM<br>
-                    30Mbps<br>UNLIMITED
-                    <br>2650TK
-                    <br><a href="packages" class="button" style="width: 130px;height: 50px;font-size: 20px;" >Get now</a>
-                </div>
+           <% } %>
 
            </div>
 
