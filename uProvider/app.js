@@ -9,9 +9,10 @@ var expressSession = require('express-session');
 var login = require('./controllers/login');
 var user = require('./controllers/user');
 var logout = require('./controllers/logout');
-var home = require('./controllers/home');
 var category = require('./controllers/category');
 var admin = require('./controllers/admin');
+var index = require('./controllers/index');
+
 
 
 
@@ -34,46 +35,30 @@ app.use('*', function(req, res, next){
 	}
 	else
 	{
-		if(req.session.username)
+		if(!req.session.username)
 		{
-			if(req.session.usertype=="user")
-			{
-				res.redirect('/user');
-			return;
-			}
-			else
-			res.redirect('/admin');
-			return;
-
-			
+		   res.redirect('/home');
+		    //console.log("index");
+		  
+	       return;
 		}
 		next();
 	}
 });
 
 // ROUTES
-app.use('/home', home);
 app.use('/login', login);
 app.use('/logout', logout);
-
 app.use('/user', user);
 app.use('/admin', admin);
+app.use('/index', index);
 
-
-
-
-
-app.use('/category', category);
 
 app.get('/', function(req, res){
-	//res.redirect('user');
-	
-	res.redirect('/home');
 	console.log(req.session);
 	req.session.name = 'ABCD';
-
+	 res.redirect('/index');
 });
-
 
 
 // SERVER START

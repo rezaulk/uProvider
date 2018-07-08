@@ -3,13 +3,22 @@ var router = express.Router();
 
 var userModel = require.main.require('./models/user-model');
 
-router.get('/',function(req,res){
+router.get('/dashboard',function(req,res){
 	if(req.session.username)
 	{
 		res.render('user/dashboard');
 		//res.send("ok");
 	}
-	//console.log("ok");
+	console.log("ok");
+});
+
+router.get('/dashboard',function(req,res){
+	if(req.session.username)
+	{
+		//res.render('user/dashboard');
+		res.send("ok");
+	}
+	console.log("ok");
 });
 /*
 router.get('/dashboard', function(req, res){	

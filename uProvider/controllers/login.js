@@ -10,16 +10,17 @@ router.post('/', function(req, res){
 	var un = req.body.username;
 	var ps = req.body.password;
 	userModel.validateUser(un, ps, function(status,k){
-		//console.log(k);
+		//console.log(status);
 		if(status)
 		{
 			req.session.username = un;
 			req.session.usertype=k;
+			//console.log(req.session.username);
 			//res.send('Valid');
 			if(k=="admin")
-			res.redirect('/admin');
+			res.redirect('/admin/dashboard');
 		else
-			res.redirect('/user');
+			res.redirect('/user/dashboard');
 
 		}
 		else

@@ -34,13 +34,6 @@ module.exports = {
 			callback(result);
 		});
 	},
-
-	insertpackage: function(category, callback){
-		var sql = "INSERT INTO package VALUES (null, ?, ?,?)";
-		db.executeQuery(sql, [package.packagename, package.price,package.speed], function(result){
-			callback(result);
-		});
-	},
 	update: function(id, name, description, callback){
 		var sql = "UPDATE categories SET name=?, description=? WHERE id=?";
 		db.executeQuery(sql, [name, description, id], function(result){

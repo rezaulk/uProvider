@@ -14,7 +14,7 @@ module.exports = {
 			//session.usertype = result.usertype;
 			  //Session["usertype"]=result[0].usertype;
 			  var k=result[0].usertype;
-			  console.log(typeof(k));
+			  //console.log(typeof(k));
                 //console.log(result);
 				callback(result.length != 0,k);
 			}
