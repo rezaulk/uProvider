@@ -6,5 +6,10 @@ router.get('/', function(req, res){
 	//res.send('Hello');
 });
 
+router.get('/myPackageDetails', function(req, res){	
+	//res.send("ok");
+	res.render('user/myPackageDetails');
+
+});
 
 module.exports = router;

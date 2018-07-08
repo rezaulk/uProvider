@@ -3,7 +3,7 @@ var router = express.Router();
 
 router.get('/', function(req, res){
 
-   // console.log('set');
+   //console.log('set');
 	 res.render('index');
 		
 });

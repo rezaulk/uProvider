@@ -29,8 +29,9 @@ router.get('/dashboard', function(req, res){
 */
 router.get('/myPackageDetails', function(req, res){	
 	//res.send("ok");
-	res.render('user/myPackageDetails');
-
+	dashboardUserModel.getPackageDetails(function(result){
+		res.render('user/myPackageDetails',{packageDetails:result})
+	});
 });
 
 router.get('/payment', function(req, res){	
@@ -43,10 +44,6 @@ router.get('/paymentList', function(req, res){
 	//res.send("ok");
 	res.render('user/paymentList');
 
-});
-
-router.get('/messages', function(req, res){
-	res.render('user/messages');
 });
 
 
