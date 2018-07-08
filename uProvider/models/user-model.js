@@ -23,8 +23,8 @@ module.exports = {
 
 	createUser: function(signup, callback){
 		//console.log('string');
-		var sql = "INSERT INTO users VALUES (null,?, ?, ?, ?, null, null, null, ?, ?)";
-		db.executeQuery(sql, [signup.name, signup.address, signup.phoneno, signup.email, signup.username, signup.password], function(result){
+		var sql = "INSERT INTO users VALUES (null,?, ?, ?, ?, ? , 'user', null, ?, ?)";
+		db.executeQuery(sql, [signup.name, signup.phoneno, signup.address, signup.email, signup.signuptime, signup.username, signup.password], function(result){
 			callback(result);
 			console.log('data inserted');
 		})
