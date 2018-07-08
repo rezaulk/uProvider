@@ -13,6 +13,7 @@ var category = require('./controllers/category');
 var admin = require('./controllers/admin');
 var index = require('./controllers/index');
 var home = require('./controllers/home');
+var signup = require('./controllers/signup');
 
 
 
@@ -30,7 +31,7 @@ app.use(expressSession({secret: 'my top secret pass', saveUninitialized: true, r
 app.use(express.static(__dirname + '/'));
 
 app.use('*', function(req, res, next){
-	if(req.originalUrl == '/login' || req.originalUrl == '/home')
+	if(req.originalUrl == '/login' || req.originalUrl == '/home' || req.originalUrl == '/signup')
 	{
 		next();
 	}
@@ -40,7 +41,7 @@ app.use('*', function(req, res, next){
 		{
 			//console.log("hello");
 		   res.redirect('/home');
-		   console.log('req.session.username'); 
+		   //console.log('req.session.username'); 
 		  
 	       return;
 		}
@@ -55,10 +56,10 @@ app.use('/user', user);
 app.use('/admin', admin);
 app.use('/index', index);
 app.use('/home', home);
-
+app.use('/signup', signup);
 
 app.get('/', function(req, res){
-	console.log(req.session);
+	//console.log(req.session);
 	req.session.name = 'ABCD';
 	 res.redirect('/home');
 });

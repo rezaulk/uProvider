@@ -19,5 +19,14 @@ module.exports = {
 				callback(result.length != 0,k);
 			}
 		});
+	},
+
+	createUser: function(signup, callback){
+		//console.log('string');
+		var sql = "INSERT INTO users VALUES (null,?, ?, ?, ?, null, null, null, ?, ?)";
+		db.executeQuery(sql, [signup.name, signup.address, signup.phoneno, signup.email, signup.username, signup.password], function(result){
+			callback(result);
+			console.log('data inserted');
+		})
 	}
 };
