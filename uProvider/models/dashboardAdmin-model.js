@@ -14,13 +14,6 @@ module.exports = {
 		});
 	},
 
-	getAllAdmin: function(callback){
-		var sql = "SELECT * FROM users where usertype=?";
-		db.executeQuery(sql, null, function(result){
-			callback(result);
-		});
-	},
-
 	getAllPackages: function(callback){
 		var sql = "SELECT * FROM package";
 		db.executeQuery(sql, null, function(result){
@@ -28,33 +21,6 @@ module.exports = {
 		});
 	},
 
-    getAllPayment: function(callback){
-		var sql = "SELECT * FROM payment";
-		db.executeQuery(sql, null, function(result){
-			callback(result);
-		});
-	},
-
-	getConncetionId: function(id,callback){
-		var sql = "SELECT * FROM connection where connectionid=?";
-		db.executeQuery(sql, [id], function(result){
-			callback(result);
-		});
-	},
-
-	getUserName: function(id,callback){
-		var sql = "SELECT * FROM users where userid=?";
-		db.executeQuery(sql, [id], function(result){
-			callback(result[0]);
-		});
-	},
-
-	getPackageName: function(id,callback){
-		var sql = "SELECT * FROM package where packageid=?";
-		db.executeQuery(sql, [id], function(result){
-			callback(result[0]);
-		});
-	},
 
 	get: function(id, callback){
 		var sql = "SELECT * FROM categories WHERE id=?";
