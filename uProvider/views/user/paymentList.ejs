@@ -11,9 +11,8 @@
                 <ul>
            	    	<li></li>
 
-                   <li><a href="signUp.html" class="w3-bar-item w3-button">Registration</a></li>
-                  <li><a href="login.html" class="w3-bar-item w3-button">Login</a></li>
-                  <li><a href="index.html" class="w3-bar-item w3-button">Home</a></li>
+                   <li><a href="logout" class="w3-bar-item w3-button">Logout</a></li>
+                  <li><a href="index" class="w3-bar-item w3-button">Home</a></li>
 
                 </ul>
            </div>
@@ -30,24 +29,10 @@
 </div>
 <div class="left-sidebar">
 		<div >
-		    <h2>Payment List</h2>
-		    <table border = "1">
-		    	<tr>
-		    		<th>Package ID</th>
-		    		<th>Amount</th>
-		    	</tr>
-		    	<% for (var i = 0; i < paymentList.length; i++){ %>
-		    	<tr>
-		    		<td><%=paymentList[i].paymentid %></td>
-		    		<td><%=paymentList[i].amount %></td>
-		    	</tr>
-		    	<% } %>
-		    </table>
+		    
 		</div>
 		<div style=" background-color: #f4f4f4;margin: 5px;padding: 5px;margin-right: 5px; font-size: 15px;width: 30%;padding-top: 1px;margin-top: 10px">
-			<p>Active package : <%= packageDetails.packagename %><br>
-       Remaining time : 08:12:40</p>
-
+			
 
 
 		</div>

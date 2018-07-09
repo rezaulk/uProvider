@@ -101,7 +101,7 @@ router.get('/payment', function(req, res){
 
 router.get('/paymentList', function(req, res){	
 	//res.send("ok");
-	userModel.getPaymentList(function(result){
+	dashboarduserModel.getPaymentList(function(result){
 		console.log(result);
 		res.render('user/paymentList',{paymentList:result});
 	});
