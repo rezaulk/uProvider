@@ -42,6 +42,13 @@ module.exports = {
 		});
 	},
 
+	getPackageCount:function(packageid,callback){
+		var sql = "SELECT * FROM connection where packageid=?";
+		db.executeQuery(sql, [packageid], function(result){
+			callback(result);
+		});
+	},
+
 	getUserName: function(id,callback){
 		var sql = "SELECT * FROM users where userid=?";
 		db.executeQuery(sql, [id], function(result){
@@ -71,12 +78,25 @@ module.exports = {
 		});
 	},
 
-	insert: function(category, callback){
-		var sql = "INSERT INTO categories VALUES (null, ?, ?)";
-		db.executeQuery(sql, [category.catname, category.desc], function(result){
+	insert: function(package, callback){
+		var sql = "INSERT INTO package VALUES (?,?, ?,null, ?)";
+		db.executeQuery(sql, [package.packagename, package.price,package.speed,package.description], function(result){
 			callback(result);
 		});
 	},
+
+	deletepackage: function(package, callback){
+		console.log(package);
+		var sql = "DELETE FROM package WHERE packageid=?";
+		var param=[package];
+		db.executeQuery(sql,param, function(result){
+			console.log(result)
+			callback(result);
+	});
+	},
+
+
+
 
 	insertpackage: function(category, callback){
 		var sql = "INSERT INTO package VALUES (null, ?, ?,?)";

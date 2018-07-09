@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html>
+<title>uProvider</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel="stylesheet" type="text/css" href="../style.css">
+  <link rel="stylesheet" href="/style.css">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <body>
   <div style="height: 90px;margin: 10px;background-color: #2C3A49">
 
            <div id="Menu">
                 <ul>
                  <li></li>
-                  <li><a href="index.html" class="w3-bar-item w3-button">Logout</a></li>
-                  <li><a href="dashboard.html" class="w3-bar-item w3-button">Reza ul</a></li>
-                  <li><a href="index.html" class="w3-bar-item w3-button">Home</a></li>
+                  <li><a href="../../logout" class="w3-bar-item w3-button">Logout</a></li>
+                  <li><a href="dashboard" class="w3-bar-item w3-button"><%= name%></a></li>
+                  <li><a href="home" class="w3-bar-item w3-button">Home</a></li>
                   <li></li>
 
                 </ul>
@@ -22,24 +27,36 @@
   <h3 class="w3-bar-item">Menu</h3>
   <a href="dashboard" class="w3-bar-item w3-button">Dashboard</a>
 
-  <a href="myPackages" class="w3-bar-item w3-button">Packages</a>
+  <a href="../myPackages" class="w3-bar-item w3-button">Packages</a>
   <a href="addPackage" class="w3-bar-item w3-button">Add Packages</a>
 
   <a href="requests" class="w3-bar-item w3-button">Requests</a>
   <a href="paymentList" class="w3-bar-item w3-button">PaymentList</a>
-
+  
   <a href="report" class="w3-bar-item w3-button">Report</a>
 
 </div>
 <div class="left-sidebar">
+  <form method="post">
     <div class="bg" style="text-align: center;">
-               <p style="color: #2C3A49 width:5px;">Durbar Standard</p><br>
+               <p style="color: #2C3A49 width:5px;"><%= package.packagename %></p><br>
                Package Internet TM<br>
-               15Mbps<br>
+               <%= package.speed %>Mbps<br>
                UNLIMITED<br>
-               1200TK<br>
-              
-          </td>
+               <%= package.price %>TK<br>
+               <input type="submit" name="" value="Delete Package" href="packageDetails/<%= package.packageid %>" style=" background-color: #4CAF50;
+                          border: none;
+                          color: white;
+                          text-align: center;
+                          padding: 5px 32px;
+                          text-align: center;
+                          text-decoration: none;
+                          display: inline-block;
+                          font-size: 16px;
+                          margin: 4px 2px;
+                          cursor: pointer;"
+                          >
+          
           <p style="color: green">Package Reviews</p>
           <div>
              <div style="float: left;">
@@ -64,6 +81,7 @@
           </div>
      
      </div>
+     </form>
       
 </div>
  <div style="height: 90px;margin: 10px;background-color: #2C3A49">

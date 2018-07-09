@@ -1,6 +1,7 @@
 
 <!DOCTYPE html>
 <html>
+<title>uProvider</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" type="text/css" href="../style.css">
@@ -10,9 +11,9 @@
            <div id="Menu">
                 <ul>
                  <li></li>
-                  <li><a href="logout" class="w3-bar-item w3-button">Logout</a></li>
-                  <li><a href="dashboard" class="w3-bar-item w3-button">Reza ul</a></li>
-                  <li><a href="home" class="w3-bar-item w3-button">Home</a></li>
+                  <li><a href="../logout" class="w3-bar-item w3-button">Logout</a></li>
+                  <li><a href="dashboard" class="w3-bar-item w3-button"><%= name %></a></li>
+                  <li><a href="dashboard" class="w3-bar-item w3-button">Home</a></li>
                   <li></li>
 
                 </ul>
@@ -38,19 +39,19 @@
     <div class="flex-container" style="padding: 1px;">
                 <div style="width: 100%">
                   <form method="post">
-                    <p>Package Name : <input type="" name="packagename" ></p></br>
+                    <p>Package Name : <input type="text" name="packagename" ></p></br>
 
-
-                    Package Speed : <select>
-                                      <option value="15Mbps">15Mbps</option>
-                                      <option value="25Mbps">25Mbps</option>
-                                      <option value="40Mbps">40Mbps</option>
+                    Package Speed : <select name="speed">
+                                      <option value="15Mbps" >15Mbps</option>
+                                      <option value="25Mbps" >25Mbps</option>
+                                      <option value="40Mbps" >40Mbps</option>
                                       <option value="UNLIMITED">UNLIMITED</option>
                                     </select></br></br>
 
-                    Package Amount : <input type="" name="packageprice" ></br>
+                    Package Amount : <input type="text" name="price" ></br></br>
+                    Description : <input type="text" name="description" ></br>
 
-                    <br><a type="submit">Confirm Package</a>
+                    <br><input type="submit" name="save" value="Confirm Package">
                     </form>
                 </div>
 

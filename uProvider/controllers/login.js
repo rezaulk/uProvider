@@ -1,4 +1,5 @@
 var express = require('express');
+var expressSession = require('express-session')
 var router = express.Router();
 var userModel = require.main.require('./models/user-model');
 router.get('/', function(req, res){
@@ -15,6 +16,7 @@ router.post('/', function(req, res){
 		{
 			req.session.username = un;
 			req.session.usertype=k;
+			expressSession["username"]=un;
 			//console.log(req.session.username);
 			//res.send('Valid');
 			if(k=="admin")

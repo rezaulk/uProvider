@@ -30,6 +30,11 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(expressSession({secret: 'my top secret pass', saveUninitialized: true, resave: false}));
 
+app.use(function(req, res, next) {
+  res.locals.user = req.session.user;
+  next();
+});
+
 app.use(express.static(__dirname + '/'));
 
 app.use('*', function(req, res, next){

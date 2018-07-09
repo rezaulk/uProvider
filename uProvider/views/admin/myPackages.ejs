@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<title>uProvider</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" type="text/css" href="../style.css">
@@ -12,9 +13,9 @@
            <div id="Menu">
                 <ul>
                  <li></li>
-                  <li><a href="index.html" class="w3-bar-item w3-button">Logout</a></li>
-                  <li><a href="dashboard.html" class="w3-bar-item w3-button">Reza ul</a></li>
-                  <li><a href="index.html" class="w3-bar-item w3-button">Home</a></li>
+                  <li><a href="../../index" class="w3-bar-item w3-button">Logout</a></li>
+                  <li><a href="dashboard" class="w3-bar-item w3-button"><%= name %></a></li>
+                  <li><a href="dashboard" class="w3-bar-item w3-button">Home</a></li>
                   <li></li>
 
                 </ul>
@@ -43,7 +44,7 @@
                       <%= packageList[i].speed %>
                                <br>UNLIMITED<br>
                     <%= packageList[i].price %>
-                    <br><a href="packageDetails">  View Package</a>
+                    <br><a href="packageDetails/<%=packageList[i].packageid %>">  View Package</a>
                 </div>
 
            <% } %>

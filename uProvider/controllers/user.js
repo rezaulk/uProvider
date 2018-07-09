@@ -2,11 +2,13 @@ var express = require('express');
 var router = express.Router();
 
 var userModel = require.main.require('./models/user-model');
+var dashboarduserModel = require.main.require('./models/dashboarduser-model');
+
 
 router.get('/dashboard',function(req,res){
 	if(req.session.username)
 	{
-		res.render('user/dashboard');
+		res.render('user/dashboard',{name:req.session.username});
 		//res.send("ok");
 	}
 	console.log("ok");
@@ -29,14 +31,48 @@ router.get('/dashboard', function(req, res){
 */
 router.get('/myPackageDetails', function(req, res){	
 	//res.send("ok");
-	dashboardUserModel.getPackageDetails(function(result){
-		res.render('user/myPackageDetails',{packageDetails:result})
-	});
+	var k=req.session.username;
+	dashboarduserModel.getPackageId(k,function(resul)
+         {
+         	//console.log(resul.packageid);
+         	var getPackageId=resul.packageid;
+                
+                dashboarduserModel.getPackageDetails(getPackageId,function(result){
+                	console.log(result);
+				        res.render('user/myPackageDetails',{packageDetails:result})
+			});
+         }
+		)
+	
 });
 
 router.get('/payment', function(req, res){	
 	//res.send("ok");
-	res.render('user/payment');
+   var paymentview= new Object();
+   var k=req.session.username;
+	dashboarduserModel.getUserId(k,function(result1)
+         {
+         	//console.log(resul.packageid);
+         	var getUserId=result1.userid;
+                paymentview.name=result1.name;
+                
+                paymentview.address=result1.address;
+                paymentview.phoneno=result1.phoneno;
+                dashboarduserModel.getConnectionDetails(getUserId,function(result2){
+                	//console.log(result);
+
+                	  var packageid=result2.packageid;
+
+                	  dashboarduserModel.getPackageDetails(packageid,function(result3)
+                	  {
+                           paymentview.packagename=result3.packagename;
+                           paymentview.price=result3.price;
+                           console.log(paymentview);
+				          res.render('user/payment',{paymentview})
+
+                	  });
+			});
+         });
 
 });
 
