@@ -43,7 +43,7 @@ module.exports = {
 	},
 
 	getPaymentList: function(callback){
-		var sql = "SELECT * FROM payment where id=?";
+		var sql = "SELECT * FROM payment";
 		db.executeQuery(sql, null, function(result){
 			callback(result);
 		});
