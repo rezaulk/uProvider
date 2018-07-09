@@ -8,7 +8,7 @@ module.exports = {
 	},
 
 	getAllUser: function(callback){
-		var sql = "SELECT * FROM users";
+		var sql = "SELECT * FROM users WHERE usertype ='user'";
 		db.executeQuery(sql, null, function(result){
 			callback(result);
 		});
@@ -52,6 +52,13 @@ module.exports = {
 	getUserName: function(id,callback){
 		var sql = "SELECT * FROM users where userid=?";
 		db.executeQuery(sql, [id], function(result){
+			callback(result[0]);
+		});
+	},
+
+	getUserNamebyuname: function(username,callback){
+		var sql = "SELECT * FROM users where username=?";
+		db.executeQuery(sql, [username], function(result){
 			callback(result[0]);
 		});
 	},

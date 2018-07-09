@@ -28,28 +28,39 @@ router.get('/', function(req, res){
 router.get('/dashboard', function(req, res){	
 	
 	var dashboard= new Object();
-	var k;
-	dashboardAdminModel.getAllUser(function(result){
+	var k=req.session.username;
+	console.log("kfkf");
+	dashboardAdminModel.getAllUser(function(result1){
 					
-			  k=result.length;
-	          dashboard.TotalUser=k;
+	          dashboard.TotalUser=result1.length;
 	          console.log(dashboard.TotalUser);
 			});
-	/*dashboardAdminModel.getAllPackages(function(result){
 
-	          dashboard.TotalPackage=result.length;
+	dashboardAdminModel.getUserNamebyuname(k,function(result4){
+					
+	          dashboard.name=result4.name;
+	          console.log(dashboard.name);
+	          //console.log(dashboard.TotalUser);
+			});
+	
+	dashboardAdminModel.getAllPackages(function(result2){
+
+	          dashboard.TotalPackage=result2.length;
 	          console.log(dashboard.TotalPackage);
 	        
 			});
-	dashboardAdminModel.getAllAdmin(function(result){
+	dashboardAdminModel.getAllAdmin(function(result3){
 
-	          dashboard.TotalAdmin=result.length;
-	        
-			});*/
+	          dashboard.TotalAdmin=result3.length;
 
-	dashboard.name=req.session.username;
-	console.log(dashboard);
+	           console.log(dashboard.TotalAdmin);
+	//console.log(dashboard);
+
 	res.render('admin/dashboard', {dashboard});
+	        
+			});
+    
+	//dashboard.name=req.session.username;
 	
     
 });

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 08, 2018 at 06:54 PM
+-- Generation Time: Jul 09, 2018 at 08:17 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -35,17 +35,21 @@ CREATE TABLE `connection` (
   `packageprice` int(11) NOT NULL,
   `date` date NOT NULL,
   `connectionid` int(11) NOT NULL,
-  `expire` date NOT NULL
+  `expire` date NOT NULL,
+  `status` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `connection`
 --
 
-INSERT INTO `connection` (`userid`, `username`, `packageid`, `packageprice`, `date`, `connectionid`, `expire`) VALUES
-(1, 'reza', 45455, 1200, '2018-07-07', 1, '2018-07-31'),
-(2, 'admin', 654, 2650, '2018-07-08', 2, '2018-07-31'),
-(6, 'abul', 258, 1650, '2018-07-07', 3, '2018-07-31');
+INSERT INTO `connection` (`userid`, `username`, `packageid`, `packageprice`, `date`, `connectionid`, `expire`, `status`) VALUES
+(1, 'reza', 45455, 1200, '2018-07-07', 1, '2018-07-31', 'active'),
+(2, 'admin', 654, 2650, '2018-07-08', 2, '2018-07-31', 'active'),
+(6, 'abul', 258, 1650, '2018-07-07', 3, '2018-07-31', 'active'),
+(8, 'efti', 45455, 1200, '2018-07-09', 4, '2018-07-29', 'active'),
+(7, 'ishmam', 45456, 2100, '2018-07-08', 5, '2018-07-30', 'active'),
+(9, 'rajesh', 258, 1650, '2018-07-10', 6, '2018-07-01', 'inactive');
 
 -- --------------------------------------------------------
 
@@ -101,17 +105,20 @@ CREATE TABLE `payment` (
   `connectionid` int(11) NOT NULL,
   `payingdate` date NOT NULL,
   `amount` int(11) NOT NULL,
-  `paymentid` int(11) NOT NULL
+  `paymentid` int(11) NOT NULL,
+  `packageid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `payment`
 --
 
-INSERT INTO `payment` (`connectionid`, `payingdate`, `amount`, `paymentid`) VALUES
-(1, '2018-07-09', 1200, 1),
-(2, '2018-07-07', 2650, 2),
-(3, '2018-07-08', 1650, 3);
+INSERT INTO `payment` (`connectionid`, `payingdate`, `amount`, `paymentid`, `packageid`) VALUES
+(1, '2018-07-09', 1200, 1, 45455),
+(2, '2018-07-07', 2650, 2, 258),
+(3, '2018-07-08', 1650, 3, 258),
+(4, '2018-07-11', 1200, 4, 45455),
+(5, '2018-07-06', 2100, 5, 45455);
 
 -- --------------------------------------------------------
 
@@ -151,10 +158,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`userid`, `name`, `phoneno`, `address`, `email`, `signuptime`, `usertype`, `logindate`, `username`, `password`) VALUES
-(1, 'reza ul karim', 1674086295, 'a', 'user', '0000-00-00', 'user', '0000-00-00', 'reza', '12'),
-(3, 'admin', 1723654789, 'Dhaka', 'admin@isp.com', '2018-07-07', 'admin', '2018-07-08', 'admin', 'admin'),
-(6, 'abul', 168234875, 'dhaka', 'abul@gmail.com', '0000-00-00', 'user', NULL, 'abul', 'abul'),
-(7, 'Ishmam Islam', 1683889948, 'Bashundhara', 'Ishmam2050@gmail.com', '2018-07-08', 'user', '2018-07-08', 'ishmam', 'ishmam');
+(1, 'reza ul karim', 1674086295, 'Kollanpur', 'reza@gmail.com', '2018-07-18', 'user', '2018-07-26', 'reza', '12'),
+(3, 'robi ullah', 1723654789, 'Dhaka', 'robiullah@isp.com', '2018-07-07', 'admin', '2018-07-08', 'robi', 'robi'),
+(6, 'abul kasem', 168234875, 'dhaka', 'abul@gmail.com', '2018-07-19', 'user', '2018-07-19', 'abul', 'abul'),
+(7, 'Ishmam Islam', 1683889948, 'Bashundhara', 'Ishmam2050@gmail.com', '2018-07-08', 'user', '2018-07-08', 'ishmam', 'ishmam'),
+(8, 'efti azam', 1548625462, 'mirpur 10', 'efti@gmail.com', '2018-07-18', 'user', '2018-07-11', 'efti', 'erfti'),
+(9, 'rajesh saha', 1545896525, 'Narayangong', 'rajesh@gmail.com', '2018-07-11', 'user', '2018-07-12', 'rajesh', 'rajesh');
 
 --
 -- Indexes for dumped tables
@@ -204,19 +213,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `connection`
 --
 ALTER TABLE `connection`
-  MODIFY `connectionid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `connectionid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `package`
 --
 ALTER TABLE `package`
-  MODIFY `packageid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45457;
+  MODIFY `packageid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45463;
 
 --
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `paymentid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `paymentid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `review`
@@ -228,7 +237,7 @@ ALTER TABLE `review`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
