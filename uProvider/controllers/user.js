@@ -34,7 +34,7 @@ router.get('/myPackageDetails', function(req, res){
 	var k=req.session.username;
 	dashboarduserModel.getPackageId(k,function(resul)
          {
-         	//console.log(resul.packageid);
+         	console.log(resul.packageid);
          	var getPackageId=resul.packageid;
                 
                 dashboarduserModel.getPackageDetails(getPackageId,function(result){
@@ -45,6 +45,29 @@ router.get('/myPackageDetails', function(req, res){
 		)
 	
 });
+
+router.get('/myPackages', function(req, res){
+	dashboarduserModel.getAllPackages(function(result){
+		res.render('user/myPackages',{packageList:result, name:req.session.username})
+	});
+});
+
+router.post('/myPackageDetails/:packageid',function(req,res){
+	console.log("update e jachche");
+	var update={
+		packageid:packageList[i].packageid
+	}
+	console.log('hoitese');
+	dashboarduserModel.update(update, function(obj){
+		console.log("teu");
+		res.redirect('/user/myPackageDetails');
+	})
+});
+
+
+
+
+
 
 router.get('/payment', function(req, res){	
 	//res.send("ok");

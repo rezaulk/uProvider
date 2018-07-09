@@ -28,6 +28,13 @@ module.exports = {
 		});
 	},
 
+	getAllPackages: function(callback){
+		var sql = "SELECT * FROM package";
+		db.executeQuery(sql, null, function(result){
+			callback(result);
+		});
+	},
+
 	getConnectionDetails: function(id,callback){
 		var sql = "SELECT * FROM connection where userid=?";
 		db.executeQuery(sql, [id], function(result){
@@ -42,6 +49,15 @@ module.exports = {
 		});
 
 	},
+
+	update: function(update, callback){
+		var sql = "UPDATE connection SET packageid = ? WHERE userid = ?";
+		db.executeQuery(sql, null, function(result){
+			console.log(result);
+			callback(result);
+		});
+	},
+
 	getUserId: function(username,callback)
 	{
 		var sql = "SELECT * from users where username=?";
