@@ -30,41 +30,23 @@
 </div>
 <div class="left-sidebar">
 		<div >
-		    <table width="100%">
-	<tr>
-		<td>Package No</td>
-		<td>Date</td>
-		<td>Amount</td>
-		<td></td>
-
-	</tr>
-	<tr>
-		<td>Durbar Standard</td>
-		<td>12.30.2018</td>
-		<td>1000tk</td>
-		<td></td>
-
-	</tr>
-	<tr>
-		<td>Durbar Ultimate</td>
-		<td>12.30.2018</td>
-		<td>1000tk</td>
-		<td></td>
-
-	</tr>
-
-	<tr>
-		<td>Durbar Economy</td>
-		<td>12.30.2018</td>
-		<td>1000tk</td>
-		<td></td>
-
-	</tr>
-</table>
+		    <h2>Payment List</h2>
+		    <table border = "1">
+		    	<tr>
+		    		<th>Package ID</th>
+		    		<th>Amount</th>
+		    	</tr>
+		    	<% for (var i = 0; i < paymentList.length; i++){ %>
+		    	<tr>
+		    		<td><%=paymentList[i].paymentid %></td>
+		    		<td><%=paymentList[i].amount %></td>
+		    	</tr>
+		    	<% } %>
+		    </table>
 		</div>
 		<div style=" background-color: #f4f4f4;margin: 5px;padding: 5px;margin-right: 5px; font-size: 15px;width: 30%;padding-top: 1px;margin-top: 10px">
-			<p>Active package : Durbar Advance<br>
-		   Remaining time : 08:12:40</p>
+			<p>Active package : <%= packageDetails.packagename %><br>
+       Remaining time : 08:12:40</p>
 
 
 

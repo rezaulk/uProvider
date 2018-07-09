@@ -14,6 +14,13 @@ module.exports = {
 		});
 	},
 
+	getPaymentList: function(callback){
+		var sql = "SELECT * from payment";
+		db.executeQuery(sql, null, function(result){
+			callback(result);
+		});
+	},
+
 	getPackageId: function(username,callback){
 		var sql = "SELECT * from connection where username=?";
 		db.executeQuery(sql, [username],function(result){
