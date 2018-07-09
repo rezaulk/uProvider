@@ -14,6 +14,7 @@ module.exports = {
 		});
 	},
 
+
 	getPackageId: function(username,callback){
 		var sql = "SELECT * from connection where username=?";
 		db.executeQuery(sql, [username],function(result){
@@ -43,7 +44,7 @@ module.exports = {
 	},
 
 	getPaymentList: function(callback){
-		var sql = "SELECT * FROM payment where id=?";
+		var sql = "SELECT * FROM payment";
 		db.executeQuery(sql, null, function(result){
 			callback(result);
 		});

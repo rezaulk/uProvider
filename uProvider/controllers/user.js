@@ -146,7 +146,10 @@ router.get('/payment', function(req, res){
 
 router.get('/paymentList', function(req, res){	
 	//res.send("ok");
-	res.render('user/paymentList');
+	dashboarduserModel.getPaymentList(function(result){
+		console.log(result);
+		res.render('user/paymentList',{paymentList:result});
+	});
 
 });
 
