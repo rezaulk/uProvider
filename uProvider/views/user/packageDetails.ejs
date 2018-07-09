@@ -4,30 +4,42 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" type="text/css" href="../style.css">
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <body>
   <div style="height: 90px;margin: 10px;background-color: #2C3A49">
 
            <div id="Menu">
                 <ul>
+                 <li></li>
+                  <li><a href="../../index" class="w3-bar-item w3-button">Logout</a></li>
+                  <li><a href="dashboard" class="w3-bar-item w3-button"><%= name %></a></li>
+                  <li><a href="dashboard" class="w3-bar-item w3-button">Home</a></li>
                   <li></li>
-                  
-                  <li><a href="signup" class="w3-bar-item w3-button">Registration</a></li>
-                  <li><a href="login" class="w3-bar-item w3-button">Login</a></li>
-                  <li><a href="index" class="w3-bar-item w3-button">Home</a></li>
 
                 </ul>
            </div>
 
   </div>
+<div class="w3-sidebar w3-light-grey w3-bar-block" style="width:15%;height: 420px">
+  <h3 class="w3-bar-item">Menu</h3>
+   <a href="dashboard" class="w3-bar-item w3-button">Dashboard</a>
 
+  <a href="../myPackages" class="w3-bar-item w3-button">My Package</a>
+  <a href="payment" class="w3-bar-item w3-button">Payments</a>
+  <a href="paymentList" class="w3-bar-item w3-button">PaymentList</a>
+
+</div>
 <div class="left-sidebar">
+    <form method="post">
     <div class="bg" style="text-align: center;">
                <p style="color: #2C3A49 width:5px;"><%= package.packagename %></p><br>
                Package Internet TM<br>
                <%= package.speed %>Mbps<br>
                UNLIMITED<br>
                <%= package.price %>TK<br>
-               <a href="../login" style=" background-color: #4CAF50;
+               <input type="submit" name="" value="Confirm Package" href="packageDetails/<%= package.packageid %>" style=" background-color: #4CAF50;
                           border: none;
                           color: white;
                           text-align: center;
@@ -38,8 +50,8 @@
                           font-size: 16px;
                           margin: 4px 2px;
                           cursor: pointer;"
-                           >Buy Package</a>
-          </td>
+                          >
+          
           <p style="color: green">Package Reviews</p>
           <div>
              <div style="float: left;">
@@ -62,10 +74,11 @@
              <div>Connection Problem</div>
 
           </div>
+     
      </div>
-      
+     </form>
 </div>
- <div style="height: 90px;margin: 10px;background-color: #2C3A49">
+<div style="height: 90px;margin: 10px;background-color: #2C3A49">
            <div></div>
 
         </div>

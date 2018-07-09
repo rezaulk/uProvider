@@ -39,7 +39,7 @@ router.get('/myPackageDetails', function(req, res){
                 
                 dashboarduserModel.getPackageDetails(getPackageId,function(result){
                 	console.log(result);
-				        res.render('user/myPackageDetails',{packageDetails:result})
+				        res.render('user/myPackageDetails',{packageDetails:result,name:req.session.username})
 			});
          }
 		)
@@ -52,7 +52,51 @@ router.get('/myPackages', function(req, res){
 	});
 });
 
-router.post('/myPackageDetails/:packageid',function(req,res){
+
+
+router.get('/packageDetails/:packageid', function(req, res){
+	//res.send('Hello');
+	var packageid = req.params.packageid;
+	var k=req.session.username;
+	console.log(k);
+
+	dashboarduserModel.get(packageid, function(obj){
+		//console.log(req.params.packageid);
+		console.log("get");
+		res.render('user/packageDetails', {package: obj,name:req.session.username});
+	});
+	//res.render('packageDetails');
+	//res.send('Hello');
+});
+
+
+router.post('/packageDetails/:packageid', function(req, res){
+	//res.send('Hello');
+	var packageid = req.params.packageid;
+
+	var p=req.session.username;
+    var update = new Object();
+	dashboarduserModel.getUserId(p,function(abc)
+	{
+		console.log(abc.userid);
+           var userid=abc.userid;
+           update.userid=userid;
+           update.packageid=packageid;
+           dashboarduserModel.update(update, function(obj){
+						console.log(req.params.packageid);
+						console.log("post");
+
+						res.redirect('../myPackageDetails');
+		//res.redirect("../dashboard",{name: req.session.username});
+	});
+
+	})
+	
+	//res.render('packageDetails');
+	//res.send('Hello');
+});
+
+router.get('myPackages/:packageid',function(req,res){
 	console.log("update e jachche");
 	var update={
 		packageid:packageList[i].packageid
@@ -60,9 +104,10 @@ router.post('/myPackageDetails/:packageid',function(req,res){
 	console.log('hoitese');
 	dashboarduserModel.update(update, function(obj){
 		console.log("teu");
-		res.redirect('/user/myPackageDetails');
+		res.redirect('/user/myPackageDetails',{name:req.session.username});
 	})
 });
+
 
 
 

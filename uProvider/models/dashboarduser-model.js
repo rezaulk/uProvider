@@ -52,9 +52,17 @@ module.exports = {
 
 	update: function(update, callback){
 		var sql = "UPDATE connection SET packageid = ? WHERE userid = ?";
-		db.executeQuery(sql, null, function(result){
+		var param=[update.packageid,update.userid];
+		db.executeQuery(sql, param, function(result){
 			console.log(result);
 			callback(result);
+		});
+	},
+	
+	get: function(id, callback){
+		var sql = "SELECT * FROM package WHERE packageid=?";
+		db.executeQuery(sql, [id], function(result){
+			callback(result[0]);
 		});
 	},
 

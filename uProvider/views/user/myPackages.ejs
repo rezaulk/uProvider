@@ -42,9 +42,9 @@
                                <br>UNLIMITED<br>
                     <%= packageList[i].price %>
                     <br>
-                    <form method="post">
-                      <input type="submit" name="packageid" value="Activate">
-                    </form>
+                   
+                     <br><a href="packageDetails/<%=packageList[i].packageid %>"> Active Package</a>
+                    
                 </div>
 
            <% } %>
