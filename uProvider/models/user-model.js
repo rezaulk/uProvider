@@ -28,5 +28,15 @@ module.exports = {
 			callback(result);
 			console.log('data inserted');
 		})
+	},
+
+	createpayment: function(paymentview, callback){
+		//console.log('string');
+		var sql = "INSERT INTO payment VALUES (?,?, ?, null, ?)";
+			//console.log('data inserted');
+
+		db.executeQuery(sql, [paymentview.connectionid,paymentview.payingdate,paymentview.price,paymentview.packageid], function(result){
+			callback(result);
+		})
 	}
 };

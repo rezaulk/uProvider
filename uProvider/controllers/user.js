@@ -144,6 +144,46 @@ router.get('/payment', function(req, res){
 
 });
 
+router.post('/payment', function(req, res){	
+	//res.send("ok");
+   var paymentview= new Object();
+   var k=req.session.username;
+	dashboarduserModel.getUserId(k,function(result1)
+         {
+         	//console.log(resul.packageid);
+         	var getUserId=result1.userid;
+                //paymentview.name=result1.name;
+                
+                paymentview.address=result1.address;
+                //paymentview.phoneno=result1.phoneno;
+                dashboarduserModel.getConnectionDetails(getUserId,function(result2){
+                	//console.log(result);
+
+                	  var packageid=result2.packageid;
+
+                	  dashboarduserModel.getPackageDetails(packageid,function(result3)
+                	  {
+                           //paymentview.packagename=result3.packagename;
+                           paymentview.price=result3.price;
+                           paymentview.packageid=packageid;
+
+                         //var mysqlTimestamp = moment(Date.now()).format('YYYY-MM-DD HH:mm:ss');
+                           paymentview.payingdate="18-07-09";
+                           paymentview.connectionid=result2.connectionid;
+                           //console.log(paymentview);
+				          //res.render('user/payment',{paymentview});
+
+				          userModel.createpayment(paymentview,function(obj)
+				          {
+				          	console.log("insert");
+				          });
+
+                	  });
+			});
+         });
+
+});
+
 router.get('/paymentList', function(req, res){	
 	//res.send("ok");
 	dashboarduserModel.getPaymentList(function(result){

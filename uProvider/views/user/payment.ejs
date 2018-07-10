@@ -4,14 +4,36 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" type="text/css" href="../style.css">
-<body>
+
+         <script type="text/javascript">
+
+      function myFunction()
+      {
+            PopUpWindow = window.open('','','',true);
+            PopUpWindow.document.write("<html><head><script>");
+
+            PopUpWindow.document.write("function check() { alert(Hello);}");
+
+            PopUpWindow.document.write("<" + "/" + "script><" + "/" + "head>");
+            PopUpWindow.document.write("<body>");
+            PopUpWindow.document.write("<h1>Hello</h1>");
+            PopUpWindow.document.write("<form>");
+            PopUpWindow.document.write("<br><center><input id=submitid type=submit onClick=check()></input></center></form>")
+
+            PopUpWindow.document.write("</body></html>");
+
+            PopUpWindow.document.close();
+      }
+
+    </script>
+    <body>
 	<div style="height: 90px;margin: 10px;background-color: #2C3A49">
 
            <div id="Menu">
            	    <ul>
                   <li></li>
 
-           	    	 <li><a href="signUp" class="w3-bar-item w3-button"> Logout </a></li>
+           	    	 <li><a href="../Logout" class="w3-bar-item w3-button"> Logout </a></li>
                   <li><a href="login" class="w3-bar-item w3-button"> <%= paymentview.name %> </a></li>
                   <li><a href="dashboard" class="w3-bar-item w3-button"> Home</a></li>
 
@@ -31,6 +53,8 @@
 </div>
 <div class="left-sidebar">
 	<div style="text-align: center;">
+  <form method="post">
+    
 		  <p>Name : <%= paymentview.name %><br>
 		     Address : <%= paymentview.address %><br>
 		     Package name : <%= paymentview.packagename %><br>
@@ -39,8 +63,13 @@
 		     Payment type : Bkash<br>
 		 </p>
 
-         <p><a href="dashboard.html" class="button" style="width: 120px;">submit</a></p>
+         <p><input type="submit" name="Save" onsubmit="myFunction()" class="button" value="pay" style="width: 120px;"></a></p>
 
+
+        
+
+
+</form>
 	</div>
 
 	<div style=" background-color: #f4f4f4;margin: 5px;padding: 5px;margin-right: 5px; font-size: 15px;width: 30%;padding-top: 1px;margin-top: 10px">

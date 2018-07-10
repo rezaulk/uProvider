@@ -107,73 +107,13 @@ router.post('/addPackage', function(req, res){
 });
 
 router.get('/paymentList', function(req, res){
-	var array=new Object();
+	
+	dashboardAdminModel.getAllPayment(function(obj)
+    {
 
-   dashboardAdminModel.getAllPayment(function(result)
-   {
-
-   	   var number=0;
-   	   for(var i=0;i<result.length;i++)
-   	   {
-   	   	      //var PaymentList=
-                var k=result[i].connectionid;
-                var t=i;
-                //console.log(t);
-                console.log("payment id");
-                  console.log(result[i].paymentid);
-
-                 dashboardAdminModel.getConncetionId(k,function(resul)
-                 {
-                      //console.log(resul);
-
-                      var userid=resul[0].userid;
-                      var packageid=resul[0].packageid;
-                  
-                  //console.log(userid);
-                  //console.log(packageid);
-                  //console.log(k);
-                    
-
-                      var k;
-                     dashboardAdminModel.getUserName(userid,function(resul1)
-	                 {
-	                          //console.log(resul1.name);
-	                          //console.log("hi");
-                              //console.log(number);
-                         k=resul1.name;
-	                          //console.log(t);
-
-	                          //result[i].U=resul1.name;
-
-	                 });
-	                 dashboardAdminModel.getPackageName(packageid,function(resul2)
-	                 {
-	                 	    //console.log(resul2.packagename);
-	                         // console.log("hi");
-                            //console.log(number);
-                            array.push([userid,k,resul2.packagename]);
-	                          //console.log(resul2.packagename);
-	                          //result[i].packagename=resul2.packagename
-	                          
-	                 });
-
-                     
-
-                 });
-
-          number++;
-
-                  
-                
-
-
-   	   }
-
-   	  //console.log(result);
-   });
-   	  console.log(array[0][0]);
-
-	res.render('admin/paymentList');
+           res.render('admin/paymentList',{paymentList:obj});
+    });
+  
 
 });
 
@@ -215,9 +155,8 @@ router.post('/packageDetails/:packageid', function(req, res){
 router.get('/report', function(req, res){	
 	
 
-    var array=[];
-
-   dashboardAdminModel.getAllPackages(function(result)
+   
+   /*dashboardAdminModel.getAllPackages(function(result)
    {
 
    	   var name;
@@ -244,7 +183,7 @@ router.get('/report', function(req, res){
 console.log(array);
 	res.render('admin/report');
 
-});
+});*/
 
    });
 

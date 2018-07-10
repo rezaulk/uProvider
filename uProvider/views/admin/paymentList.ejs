@@ -25,7 +25,7 @@
   <a href="myPackages" class="w3-bar-item w3-button">Packages</a>
   <a href="addPackage" class="w3-bar-item w3-button">Add Packages</a>
 
-  <a href="requests" class="w3-bar-item w3-button">Requests</a>
+  <a href="#" class="w3-bar-item w3-button">Requests</a>
   <a href="paymentList" class="w3-bar-item w3-button">PaymentList</a>
 
   <a href="report" class="w3-bar-item w3-button">Report</a>
@@ -35,42 +35,27 @@
 	<div >
 		<table width="100%">
 			<tr>
-				<td>Name</td>
-				<td>ServiceId</td>
-				<td>Package Name</td>
-				<td>Date</td>
+				<td>Payment Id</td>
+				<td>Connection Id</td>
 				<td>Amount</td>
+				<td>Paying Date</td>
+				<td>Package Id</td>
 				<td></td>
 
 			</tr>
+			<% for(var i = 0; i < paymentList.length; i++){ %>
 			<tr>
-				<td>Reza ul karim</td>
-				<td>R-12548</td>
-				<td>package 1</td>
-				<td>12.30.2018</td>
-				<td>1000tk</td>
+				<td width="15%"><%= paymentList[i].paymentid %></td>
+
+				<td width="15%"><%= paymentList[i].name %></td>
+				<td width="30%"><%= paymentList[i].payingdate %></td>
+				<td width="20%"><%= paymentList[i].amount %></td>
+				<td width="20%"><%= paymentList[i].packageid %></td>
+
+
 				<td></td>
-
 			</tr>
-			<tr>
-				<td>Rifat hasan</td>
-				<td>R-2546</td>
-				<td>package 1</td>
-				<td>12.30.2018</td>
-				<td>1000tk</td>
-				<td></td>
-
-			</tr>
-
-			<tr>
-				<td>Syan ahmed</td>
-				<td>S-25887</td>
-				<td>package 1</td>
-				<td>12.30.2018</td>
-				<td>1000tk</td>
-				<td></td>
-
-			</tr>
+		<% } %>
 		</table>
 	</div>
 </div>

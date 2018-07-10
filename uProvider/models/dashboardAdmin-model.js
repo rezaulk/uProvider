@@ -29,7 +29,7 @@ module.exports = {
 	},
 
     getAllPayment: function(callback){
-		var sql = "SELECT * FROM payment";
+		var sql = "SELECT * FROM payment JOIN connection ON payment.connectionid = connection.connectionid JOIN users on connection.userid = users.userid";
 		db.executeQuery(sql, null, function(result){
 			callback(result);
 		});
